@@ -1,6 +1,6 @@
 name: fixed_collections
-description: Collections you can't modify
-version: 0.1.0-beta
+description: Collections you can't modify. Use lists that give you compile-time errors if you make calls to modify the list.
+version: 0.2.0-beta
 homepage: https://github.com/MelbourneDeveloper/fixed_collections
 
 environment:

@@ -84,5 +84,5 @@ class FixedList<E> extends ListBase<E> {
 }
 
 extension IterableExtensions2<T> on Iterable<T> {
-  FixedList<T> toImmutableList() => FixedList<T>(this);
+  FixedList<T> toFixedList() => FixedList<T>(this);
 }

@@ -23,9 +23,9 @@ void main() {
           items.reduce((a, b) => a + b),
         );
 
-        expect([1].toImmutableList().length, 1);
+        expect([1].toFixedList().length, 1);
 
-        expect([1].toImmutableList()[0], 1);
+        expect([1].toFixedList()[0], 1);
 
         //Make sure we cannot add
         //ignore: deprecated_member_use_from_same_package
