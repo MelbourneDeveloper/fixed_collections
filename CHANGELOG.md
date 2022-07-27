@@ -2,3 +2,5 @@
 Inititial release
 ## 0.2.0-beta
 Fix the extension method name (toFixedList)
+## 0.3.0-beta
+Readme wording
