@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_relative_lib_imports
 
+import 'package:collection/collection.dart';
 import 'package:fixed_collections/fixed_collections.dart';
 import 'package:test/test.dart';
 
@@ -53,6 +54,31 @@ void main() {
         }
 
         expect(total, 6);
+      }),
+      test('Test Equality', () {
+        const items = [1, 2, 3];
+
+        final immutableList = FixedList<int>(items);
+        final immutableList2 = FixedList<int>(items);
+
+        //Should be equal
+        final listEquality = const ListEquality<int>().equals;
+        final isEqual = listEquality(immutableList, immutableList2);
+        expect(isEqual, true);
+
+        expect(
+          Object.hash(immutableList[0], immutableList[1], immutableList[2]) ==
+              Object.hash(
+                immutableList2[0],
+                immutableList2[1],
+                immutableList2[2],
+              ),
+          true,
+        );
+
+        //Should not be equal
+        final isEqual2 = listEquality(immutableList, FixedList<int>([3, 2, 1]));
+        expect(isEqual2, false);
       }),
     },
   );

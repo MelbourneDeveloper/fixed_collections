@@ -26,4 +26,11 @@ void main(List<String> arguments) {
 
   //No soup for you!
   strings.clear();
+
+  //Compare equality using the collections package
+  final isEqual = strings == strings;
+
+  //Normal hashes are no good for fixed lists. Use a different approach such
+  //as calculating the hash manually.
+  final hashCode = strings.hashCode;
 }

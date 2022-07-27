@@ -4,3 +4,5 @@ Inititial release
 Fix the extension method name (toFixedList)
 ## 0.3.0-beta
 Readme wording
+## 0.4.0-beta
+Deprecate more stuff (including hashCode and ==). Use the collections package for list equality.
