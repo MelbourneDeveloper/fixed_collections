@@ -1,7 +1,7 @@
-import 'package:unmodifiable_collections/unmodifiable_collections.dart';
+import 'package:fixed_collections/fixed_collections.dart';
 
 void main(List<String> arguments) {
-  final strings = UnmodifiableList<String>(['Example']);
+  final strings = FixedList<String>(['Example']);
 
   //add got cancelled
   strings.add('hi');

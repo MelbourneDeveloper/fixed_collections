@@ -1,17 +1,15 @@
 import 'dart:collection';
 import 'dart:math';
 
-///A [List] that is unmodifiable.
-class UnmodifiableList<E> extends ListBase<E> {
+///A [List] that is fixed.
+class FixedList<E> extends ListBase<E> {
   final List<E> _innerList;
 
-  static const String message =
-      "This list is unmodifiable. You cannot modify it";
+  static const String message = "This list is fixed. You cannot modify it";
 
-  UnmodifiableList(Iterable<E> items)
-      : _innerList = List<E>.unmodifiable(items);
+  FixedList(Iterable<E> items) : _innerList = List<E>.unmodifiable(items);
 
-  UnmodifiableList.empty() : _innerList = List<E>.unmodifiable([]);
+  FixedList.empty() : _innerList = List<E>.unmodifiable([]);
 
   @Deprecated(message)
   @override
@@ -86,5 +84,5 @@ class UnmodifiableList<E> extends ListBase<E> {
 }
 
 extension IterableExtensions2<T> on Iterable<T> {
-  UnmodifiableList<T> toImmutableList() => UnmodifiableList<T>(this);
+  FixedList<T> toImmutableList() => FixedList<T>(this);
 }

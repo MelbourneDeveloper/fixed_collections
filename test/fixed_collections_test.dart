@@ -1,7 +1,7 @@
 // ignore_for_file: avoid_relative_lib_imports
 
+import 'package:fixed_collections/fixed_collections.dart';
 import 'package:test/test.dart';
-import 'package:unmodifiable_collections/unmodifiable_collections.dart';
 
 void main() {
   group(
@@ -10,7 +10,7 @@ void main() {
       test('Test Unmodifiability', () {
         final items = [1, 2, 3];
 
-        final immutableList = UnmodifiableList<int>(items);
+        final immutableList = FixedList<int>(items);
 
         //First element
         expect(immutableList.first, items.first);
@@ -45,7 +45,7 @@ void main() {
         final items = [1, 2, 3];
         var total = 0;
 
-        final immutableList = UnmodifiableList<int>(items);
+        final immutableList = FixedList<int>(items);
 
         //Iterate over the list
         for (final item in immutableList) {

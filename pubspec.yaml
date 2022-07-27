@@ -1,7 +1,7 @@
-name: unmodifiable_collections
+name: fixed_collections
 description: Collections you can't modify
 version: 0.1.0-beta
-homepage: https://github.com/MelbourneDeveloper/unmodifiable_collections
+homepage: https://github.com/MelbourneDeveloper/fixed_collections
 
 environment:
   sdk: ">=2.17.6 <3.0.0"
