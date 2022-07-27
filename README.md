@@ -6,4 +6,5 @@ This library contains collections that are unmodifiable. You pass an iterable in
 
 More unmodifiable collections coming!
 
+Please report members that modify the collection and are not deprecated in the issues section
 
