@@ -1,18 +1,19 @@
 import 'dart:collection';
+import 'dart:html';
 import 'dart:math';
+
+const String cantModifyErrorMessage =
+    "This list is fixed. You cannot modify it";
+const _equalityErrorMessage =
+    'Please use ListEquality in the collections package to compare '
+    'list equality';
+const _hashErrorMessage =
+    'Please manually calculate the hash of this list, or use the collections'
+    ' package to compare list equality';
 
 ///A [List] that is fixed.
 class FixedList<E> extends ListBase<E> {
   final List<E> _innerList;
-
-  static const String cantModifyErrorMessage =
-      "This list is fixed. You cannot modify it";
-  static const _equalityErrorMessage =
-      'Please use ListEquality in the collections package to compare '
-      'list equality';
-  static const _hashErrorMessage =
-      'Please manually calculate the hash of this list, or use the collections'
-      ' package to compare list equality';
 
   FixedList(Iterable<E> items) : _innerList = List<E>.unmodifiable(items);
 
@@ -20,15 +21,11 @@ class FixedList<E> extends ListBase<E> {
 
   @Deprecated(cantModifyErrorMessage)
   @override
-  void clear() {
-    throw UnsupportedError(cantModifyErrorMessage);
-  }
+  void clear();
 
   @Deprecated(cantModifyErrorMessage)
   @override
-  void add(E element) {
-    throw UnsupportedError(cantModifyErrorMessage);
-  }
+  void add(E element);
 
   @Deprecated(cantModifyErrorMessage)
   @override
@@ -132,9 +129,7 @@ class FixedList<E> extends ListBase<E> {
 
   @Deprecated(cantModifyErrorMessage)
   @override
-  void fillRange(int start, int end, [E? fill]) {
-    throw UnsupportedError(cantModifyErrorMessage);
-  }
+  void fillRange(int start, int end, [E? fill]);
 
   @Deprecated(cantModifyErrorMessage)
   @override
@@ -147,6 +142,61 @@ class FixedList<E> extends ListBase<E> {
   void shuffle([Random? random]) {
     throw UnsupportedError(cantModifyErrorMessage);
   }
+}
+
+class FixedMap<K, V> extends MapBase<K, V> {
+  final Map<K, V> _innerMap;
+
+  FixedMap(Map<K, V> other) : _innerMap = Map<K, V>.unmodifiable(other);
+
+  FixedMap.empty() : _innerMap = Map<K, V>.unmodifiable({});
+
+  @override
+  V? operator [](Object? key) => _innerMap[key];
+
+  @override
+  Iterable<K> get keys => _innerMap.keys;
+
+  @Deprecated(cantModifyErrorMessage)
+  @override
+  void operator []=(K key, V value) =>
+      throw UnsupportedError(cantModifyErrorMessage);
+
+  @Deprecated(cantModifyErrorMessage)
+  @override
+  void addAll(Map<K, V> other);
+
+  @Deprecated(cantModifyErrorMessage)
+  @override
+  void addEntries(Iterable<MapEntry<K, V>> newEntries);
+
+  @Deprecated(cantModifyErrorMessage)
+  @override
+  void clear() => throw UnsupportedError(cantModifyErrorMessage);
+
+  @Deprecated(cantModifyErrorMessage)
+  @override
+  V putIfAbsent(K key, V Function() ifAbsent) =>
+      throw UnsupportedError(cantModifyErrorMessage);
+
+  @Deprecated(cantModifyErrorMessage)
+  @override
+  V? remove(Object? key) => throw UnsupportedError(cantModifyErrorMessage);
+
+  @Deprecated(cantModifyErrorMessage)
+  @override
+  void removeWhere(bool Function(K key, V value) test) =>
+      throw UnsupportedError(cantModifyErrorMessage);
+
+  @Deprecated(cantModifyErrorMessage)
+  @override
+  V update(K key, V Function(V value) update, {V Function()? ifAbsent}) =>
+      throw UnsupportedError(cantModifyErrorMessage);
+
+  @Deprecated(cantModifyErrorMessage)
+  @override
+  void updateAll(V Function(K key, V value) update) =>
+      throw UnsupportedError(cantModifyErrorMessage);
 }
 
 extension IterableExtensions2<T> on Iterable<T> {
