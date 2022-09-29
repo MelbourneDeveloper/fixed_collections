@@ -7,9 +7,37 @@ import 'package:test/test.dart';
 //ignore: long-method
 void main() {
   group(
+    'Maps',
+    () => {
+      test('Test Unmodifiability', () {
+        final items = {1: 1, 2: 2};
+        final Map<int, int> immutableSet = FixedMap<int, int>(items);
+
+        //First element
+        expect(immutableSet.keys.first, items.keys.first);
+        expect(immutableSet.values.first, items.values.first);
+
+        //Length
+        expect(immutableSet.length, items.length);
+
+        //Make sure we cannot add
+        //ignore: deprecated_member_use_from_same_package
+        expect(
+          () => immutableSet.putIfAbsent(5, () => 5),
+          throwsUnsupportedError,
+        );
+
+        //Make sure we cannot remove
+        //ignore: deprecated_member_use_from_same_package
+        expect(() => immutableSet.remove(1), throwsUnsupportedError);
+      }),
+    },
+  );
+
+  group(
     'Sets',
     () => {
-      test('Test  Unmodifiability', () {
+      test('Test Unmodifiability', () {
         final items = [1, 2, 3];
 
         final Set<int> immutableSet = FixedSet<int>(items.toSet());
