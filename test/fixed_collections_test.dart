@@ -1,5 +1,3 @@
-// ignore_for_file: avoid_relative_lib_imports
-
 import 'package:collection/collection.dart';
 import 'package:fixed_collections/fixed_collections.dart';
 import 'package:test/test.dart';
@@ -21,14 +19,12 @@ void main() {
         expect(immutableSet.length, items.length);
 
         //Make sure we cannot add
-        //ignore: deprecated_member_use_from_same_package
         expect(
           () => immutableSet.putIfAbsent(5, () => 5),
           throwsUnsupportedError,
         );
 
         //Make sure we cannot remove
-        //ignore: deprecated_member_use_from_same_package
         expect(() => immutableSet.remove(1), throwsUnsupportedError);
       }),
     },
@@ -54,11 +50,9 @@ void main() {
         );
 
         //Make sure we cannot add
-        //ignore: deprecated_member_use_from_same_package
         expect(() => immutableSet.add(1), throwsUnsupportedError);
 
         //Make sure we cannot remove
-        //ignore: deprecated_member_use_from_same_package
         expect(() => immutableSet.remove(1), throwsUnsupportedError);
       }),
     },
@@ -70,7 +64,7 @@ void main() {
       test('Test Unmodifiability', () {
         final items = [1, 2, 3];
 
-        final immutableList = FixedList<int>(items);
+        final List<int> immutableList = FixedList<int>(items);
 
         //First element
         expect(immutableList.first, items.first);
@@ -88,15 +82,12 @@ void main() {
         expect([1].toFixedList()[0], 1);
 
         //Make sure we cannot add
-        //ignore: deprecated_member_use_from_same_package
         expect(() => immutableList.add(1), throwsUnsupportedError);
 
         //Make sure we cannot remove
-        //ignore: deprecated_member_use_from_same_package
         expect(() => immutableList.remove(1), throwsUnsupportedError);
 
         //Make sure we cannot change
-        //ignore: deprecated_member_use_from_same_package
         expect(() => immutableList[0] = 2, throwsUnsupportedError);
 
         //TODO: Expect all the errors

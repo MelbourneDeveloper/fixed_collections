@@ -1,31 +1,31 @@
 import 'package:fixed_collections/fixed_collections.dart';
 
 void main(List<String> arguments) {
-  final strings = FixedList<String>(['Example']);
+  final listExample = FixedList<String>(['Example']);
 
   //add got cancelled
-  strings.add('hi');
+  listExample.add('hi');
 
   //addAll - cancelled!
-  strings.addAll(iterable)
+  listExample.addAll(iterable)
 
   //I don't think so
-  strings[0] = "lo";
+  listExample[0] = "lo";
 
   //Oh no you didn't!
-  strings.insert(1, 'something');
+  listExample.insert(1, 'something');
 
   //You can't do that
-  strings.fillRange(0, 1, 'something else');
+  listExample.fillRange(0, 1, 'something else');
 
   //That's nasty
-  strings.sort();
+  listExample.sort();
 
   //No!
-  strings.shuffle();
+  listExample.shuffle();
 
   //No soup for you!
-  strings.clear();
+  listExample.clear();
 
   final setExample = FixedSet<String>({'Example', 'Example2'});
 
