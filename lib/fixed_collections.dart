@@ -204,6 +204,18 @@ class FixedSet<E> extends SetBase<E> {
   //No mutation
   @override
   bool contains(Object? element) => _innerSet.contains(element);
+
+  @override
+  Iterator<E> get iterator => _innerSet.iterator;
+
+  @override
+  int get length => _innerSet.length;
+
+  @override
+  E? lookup(Object? element) => _innerSet.lookup(element);
+
+  @override
+  Set<E> toSet() => _innerSet.toSet();
   //---------------------------------------------------------------------
 
   //---------------------------------------------------------------------
