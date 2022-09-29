@@ -4,7 +4,38 @@ import 'package:collection/collection.dart';
 import 'package:fixed_collections/fixed_collections.dart';
 import 'package:test/test.dart';
 
+//ignore: long-method
 void main() {
+  group(
+    'Sets',
+    () => {
+      test('Test  Unmodifiability', () {
+        final items = [1, 2, 3];
+
+        final Set<int> immutableSet = FixedSet<int>(items.toSet());
+
+        //First element
+        expect(immutableSet.first, items.first);
+
+        //Length
+        expect(immutableSet.length, items.length);
+
+        expect(
+          immutableSet.reduce((a, b) => a + b),
+          items.reduce((a, b) => a + b),
+        );
+
+        //Make sure we cannot add
+        //ignore: deprecated_member_use_from_same_package
+        expect(() => immutableSet.add(1), throwsUnsupportedError);
+
+        //Make sure we cannot remove
+        //ignore: deprecated_member_use_from_same_package
+        expect(() => immutableSet.remove(1), throwsUnsupportedError);
+      }),
+    },
+  );
+
   group(
     'Lists',
     () => {
