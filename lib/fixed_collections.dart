@@ -1,15 +1,8 @@
 import 'dart:collection';
-import 'dart:html';
 import 'dart:math';
 
 const String cantModifyErrorMessage =
-    "This list is fixed. You cannot modify it";
-const _equalityErrorMessage =
-    'Please use ListEquality in the collections package to compare '
-    'list equality';
-const _hashErrorMessage =
-    'Please manually calculate the hash of this list, or use the collections'
-    ' package to compare list equality';
+    "This collection is fixed. You cannot modify it";
 
 ///A [List] that is fixed.
 class FixedList<E> extends ListBase<E> {
@@ -18,6 +11,12 @@ class FixedList<E> extends ListBase<E> {
   FixedList(Iterable<E> items) : _innerList = List<E>.unmodifiable(items);
 
   FixedList.empty() : _innerList = List<E>.unmodifiable([]);
+
+  @override
+  E operator [](int index) => _innerList[index];
+
+  @override
+  int get length => _innerList.length;
 
   @Deprecated(cantModifyErrorMessage)
   @override
@@ -87,8 +86,6 @@ class FixedList<E> extends ListBase<E> {
     throw UnsupportedError(cantModifyErrorMessage);
   }
 
-  @override
-  int get length => _innerList.length;
   @Deprecated(cantModifyErrorMessage)
   @override
   set length(int length) {
@@ -100,20 +97,6 @@ class FixedList<E> extends ListBase<E> {
   void operator []=(int index, E value) {
     throw UnsupportedError(cantModifyErrorMessage);
   }
-
-  @override
-  E operator [](int index) => _innerList[index];
-
-  @Deprecated(_equalityErrorMessage)
-  @override
-  // ignore: avoid_equals_and_hash_code_on_mutable_classes
-  bool operator ==(Object other) =>
-      throw UnsupportedError(_equalityErrorMessage);
-
-  @Deprecated(_hashErrorMessage)
-  @override
-  // ignore: avoid_equals_and_hash_code_on_mutable_classes
-  int get hashCode => throw UnsupportedError(_hashErrorMessage);
 
   @Deprecated(cantModifyErrorMessage)
   @override
@@ -197,6 +180,37 @@ class FixedMap<K, V> extends MapBase<K, V> {
   @override
   void updateAll(V Function(K key, V value) update) =>
       throw UnsupportedError(cantModifyErrorMessage);
+}
+
+class FixedSet<E> extends SetBase<E> with SetMixin<E> {
+  final Set<E> _innerSet;
+
+  FixedSet(Set<E> other) : _innerSet = Set<E>.unmodifiable(other);
+
+  FixedSet.empty() : _innerSet = Set<E>.unmodifiable({});
+
+  @Deprecated(cantModifyErrorMessage)
+  @override
+  bool add(E value) => throw UnsupportedError(cantModifyErrorMessage);
+
+  @Deprecated(cantModifyErrorMessage)
+  @override
+  bool remove(Object? value) => throw UnsupportedError(cantModifyErrorMessage);
+
+  @override
+  E? lookup(Object? element) => _innerSet.lookup(element);
+
+  @override
+  bool contains(Object? element) => _innerSet.contains(element);
+
+  @override
+  Iterator<E> get iterator => _innerSet.iterator;
+
+  @override
+  int get length => _innerSet.length;
+
+  @override
+  Set<E> toSet() => _innerSet.toSet();
 }
 
 extension IterableExtensions2<T> on Iterable<T> {
