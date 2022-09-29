@@ -258,6 +258,14 @@ class FixedSet<E> extends SetBase<E> {
       throw UnsupportedError(cantModifyErrorMessage);
 }
 
-extension IterableExtensions2<T> on Iterable<T> {
+extension IterableExtensions<T> on Iterable<T> {
   FixedList<T> toFixedList() => FixedList<T>(this);
+}
+
+extension SetExtensions<T> on Set<T> {
+  FixedSet<T> toFixedSet() => FixedSet<T>(this);
+}
+
+extension MapExtensions<K, T> on Map<K, T> {
+  FixedMap<K, T> toFixedMap() => FixedMap<K, T>(this);
 }

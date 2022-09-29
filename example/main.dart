@@ -27,10 +27,15 @@ void main(List<String> arguments) {
   //No soup for you!
   strings.clear();
 
-  //Compare equality using the collections package
-  final isEqual = strings == strings;
+  final setExample = FixedSet<String>({'Example', 'Example2'});
 
-  //Normal hashes are no good for fixed lists. Use a different approach such
-  //as calculating the hash manually.
-  final hashCode = strings.hashCode;
+  //You can't add to a fixed set
+  setExample.add('example3');
+
+  final mapExample = FixedMap<String, String>({'Key': 'Value'});
+
+  //You can't put anything in a FixedMap after construction
+  mapExample.putIfAbsent('Key 2', () => ' Example 2');
 }
+
+
