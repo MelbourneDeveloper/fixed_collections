@@ -203,32 +203,7 @@ class FixedSet<E> extends SetBase<E> {
   //---------------------------------------------------------------------
   //No mutation
   @override
-  bool any(bool Function(E element) test) => _innerSet.any(test);
-
-  @override
-  Set<R> cast<R>() => _innerSet.cast();
-
-  @override
   bool contains(Object? element) => _innerSet.contains(element);
-
-  @override
-  bool containsAll(Iterable<Object?> other) => _innerSet.containsAll(other);
-
-  @override
-  Set<E> difference(Set<Object?> other) => _innerSet.difference(other);
-
-  @override
-  E elementAt(int index) => _innerSet.elementAt(index);
-
-  @override
-  bool every(bool Function(E element) f) => _innerSet.every(f);
-
-  @override
-  Iterable<T> expand<T>(Iterable<T> Function(E element) f) =>
-      _innerSet.expand(f);
-
-  @override
-  E get first => throw UnsupportedError(cantModifyErrorMessage);
   //---------------------------------------------------------------------
 
   //---------------------------------------------------------------------
@@ -246,165 +221,29 @@ class FixedSet<E> extends SetBase<E> {
   @override
   void clear() => throw UnsupportedError(cantModifyErrorMessage);
 
+  @Deprecated(cantModifyErrorMessage)
   @override
-  E firstWhere(bool Function(E value) test, {E Function()? orElse}) =>
+  bool remove(Object? value) => throw UnsupportedError(cantModifyErrorMessage);
+
+  @Deprecated(cantModifyErrorMessage)
+  @override
+  void removeAll(Iterable<Object?> elements) =>
       throw UnsupportedError(cantModifyErrorMessage);
 
+  @Deprecated(cantModifyErrorMessage)
   @override
-  T fold<T>(T initialValue, T Function(T previousValue, E element) combine) =>
+  void removeWhere(bool Function(E element) test) =>
       throw UnsupportedError(cantModifyErrorMessage);
 
+  @Deprecated(cantModifyErrorMessage)
   @override
-  Iterable<E> followedBy(Iterable<E> other) =>
+  void retainAll(Iterable<Object?> elements) =>
       throw UnsupportedError(cantModifyErrorMessage);
 
+  @Deprecated(cantModifyErrorMessage)
   @override
-  void forEach(void Function(E element) f) =>
+  void retainWhere(bool Function(E element) test) =>
       throw UnsupportedError(cantModifyErrorMessage);
-
-  @override
-  Set<E> intersection(Set<Object?> other) =>
-      throw UnsupportedError(cantModifyErrorMessage);
-
-  @override
-  // TODO: implement isEmpty
-  bool get isEmpty => throw UnimplementedError();
-
-  @override
-  // TODO: implement isNotEmpty
-  bool get isNotEmpty => throw UnimplementedError();
-
-  @override
-  // TODO: implement iterator
-  Iterator<E> get iterator => throw UnimplementedError();
-
-  @override
-  String join([String separator = ""]) {
-    // TODO: implement join
-    throw UnimplementedError();
-  }
-
-  @override
-  // TODO: implement last
-  E get last => throw UnimplementedError();
-
-  @override
-  E lastWhere(bool Function(E value) test, {E Function()? orElse}) {
-    // TODO: implement lastWhere
-    throw UnimplementedError();
-  }
-
-  @override
-  // TODO: implement length
-  int get length => throw UnimplementedError();
-
-  @override
-  E? lookup(Object? element) {
-    // TODO: implement lookup
-    throw UnimplementedError();
-  }
-
-  @override
-  Iterable<T> map<T>(T Function(E element) f) {
-    // TODO: implement map
-    throw UnimplementedError();
-  }
-
-  @override
-  E reduce(E Function(E value, E element) combine) {
-    // TODO: implement reduce
-    throw UnimplementedError();
-  }
-
-  @override
-  bool remove(Object? value) {
-    // TODO: implement remove
-    throw UnimplementedError();
-  }
-
-  @override
-  void removeAll(Iterable<Object?> elements) {
-    // TODO: implement removeAll
-  }
-
-  @override
-  void removeWhere(bool Function(E element) test) {
-    // TODO: implement removeWhere
-  }
-
-  @override
-  void retainAll(Iterable<Object?> elements) {
-    // TODO: implement retainAll
-  }
-
-  @override
-  void retainWhere(bool Function(E element) test) {
-    // TODO: implement retainWhere
-  }
-
-  @override
-  // TODO: implement single
-  E get single => throw UnimplementedError();
-
-  @override
-  E singleWhere(bool Function(E value) test, {E Function()? orElse}) {
-    // TODO: implement singleWhere
-    throw UnimplementedError();
-  }
-
-  @override
-  Iterable<E> skip(int n) {
-    // TODO: implement skip
-    throw UnimplementedError();
-  }
-
-  @override
-  Iterable<E> skipWhile(bool Function(E value) test) {
-    // TODO: implement skipWhile
-    throw UnimplementedError();
-  }
-
-  @override
-  Iterable<E> take(int n) {
-    // TODO: implement take
-    throw UnimplementedError();
-  }
-
-  @override
-  Iterable<E> takeWhile(bool Function(E value) test) {
-    // TODO: implement takeWhile
-    throw UnimplementedError();
-  }
-
-  @override
-  List<E> toList({bool growable = true}) {
-    // TODO: implement toList
-    throw UnimplementedError();
-  }
-
-  @override
-  Set<E> toSet() {
-    // TODO: implement toSet
-    throw UnimplementedError();
-  }
-
-  @override
-  Set<E> union(Set<E> other) {
-    // TODO: implement union
-    throw UnimplementedError();
-  }
-
-  @override
-  Iterable<E> where(bool Function(E element) f) {
-    // TODO: implement where
-    throw UnimplementedError();
-  }
-
-  @override
-  Iterable<T> whereType<T>() {
-    // TODO: implement whereType
-    throw UnimplementedError();
-  }
 }
 
 extension IterableExtensions2<T> on Iterable<T> {
