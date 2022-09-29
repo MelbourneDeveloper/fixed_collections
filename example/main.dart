@@ -7,7 +7,7 @@ void main(List<String> arguments) {
   listExample.add('hi');
 
   //addAll - cancelled!
-  listExample.addAll(iterable)
+  listExample.addAll(iterable);
 
   //I don't think so
   listExample[0] = "lo";
@@ -30,12 +30,12 @@ void main(List<String> arguments) {
   final setExample = FixedSet<String>({'Example', 'Example2'});
 
   //You can't add to a fixed set
+  //ignore: avoid_ignoring_return_values
   setExample.add('example3');
 
   final mapExample = FixedMap<String, String>({'Key': 'Value'});
 
   //You can't put anything in a FixedMap after construction
+  //ignore: avoid_ignoring_return_values
   mapExample.putIfAbsent('Key 2', () => ' Example 2');
 }
-
-
