@@ -1,17 +1,70 @@
-// ignore_for_file: avoid_relative_lib_imports
-
 import 'package:collection/collection.dart';
 import 'package:fixed_collections/fixed_collections.dart';
 import 'package:test/test.dart';
 
+//ignore: long-method
 void main() {
+  group(
+    'Maps',
+    () => {
+      test('Test Unmodifiability', () {
+        final items = {1: 1, 2: 2};
+        final Map<int, int> immutableSet = FixedMap<int, int>(items);
+
+        //First element
+        expect(immutableSet.keys.first, items.keys.first);
+        expect(immutableSet.values.first, items.values.first);
+
+        //Length
+        expect(immutableSet.length, items.length);
+
+        //Make sure we cannot add
+        expect(
+          () => immutableSet.putIfAbsent(5, () => 5),
+          throwsUnsupportedError,
+        );
+
+        //Make sure we cannot remove
+        expect(() => immutableSet.remove(1), throwsUnsupportedError);
+      }),
+    },
+  );
+
+  group(
+    'Sets',
+    () => {
+      test('Test Unmodifiability', () {
+        final items = [1, 2, 3];
+
+        final Set<int> immutableSet = FixedSet<int>(items.toSet());
+
+        //First element
+        expect(immutableSet.first, items.first);
+
+        //Length
+        expect(immutableSet.length, items.length);
+
+        expect(
+          immutableSet.reduce((a, b) => a + b),
+          items.reduce((a, b) => a + b),
+        );
+
+        //Make sure we cannot add
+        expect(() => immutableSet.add(1), throwsUnsupportedError);
+
+        //Make sure we cannot remove
+        expect(() => immutableSet.remove(1), throwsUnsupportedError);
+      }),
+    },
+  );
+
   group(
     'Lists',
     () => {
       test('Test Unmodifiability', () {
         final items = [1, 2, 3];
 
-        final immutableList = FixedList<int>(items);
+        final List<int> immutableList = FixedList<int>(items);
 
         //First element
         expect(immutableList.first, items.first);
@@ -29,15 +82,12 @@ void main() {
         expect([1].toFixedList()[0], 1);
 
         //Make sure we cannot add
-        //ignore: deprecated_member_use_from_same_package
         expect(() => immutableList.add(1), throwsUnsupportedError);
 
         //Make sure we cannot remove
-        //ignore: deprecated_member_use_from_same_package
         expect(() => immutableList.remove(1), throwsUnsupportedError);
 
         //Make sure we cannot change
-        //ignore: deprecated_member_use_from_same_package
         expect(() => immutableList[0] = 2, throwsUnsupportedError);
 
         //TODO: Expect all the errors

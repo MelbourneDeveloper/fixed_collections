@@ -1,36 +1,41 @@
 import 'package:fixed_collections/fixed_collections.dart';
 
 void main(List<String> arguments) {
-  final strings = FixedList<String>(['Example']);
+  final listExample = FixedList<String>(['Example']);
 
   //add got cancelled
-  strings.add('hi');
+  listExample.add('hi');
 
   //addAll - cancelled!
-  strings.addAll(iterable)
+  listExample.addAll(iterable);
 
   //I don't think so
-  strings[0] = "lo";
+  listExample[0] = "lo";
 
   //Oh no you didn't!
-  strings.insert(1, 'something');
+  listExample.insert(1, 'something');
 
   //You can't do that
-  strings.fillRange(0, 1, 'something else');
+  listExample.fillRange(0, 1, 'something else');
 
   //That's nasty
-  strings.sort();
+  listExample.sort();
 
   //No!
-  strings.shuffle();
+  listExample.shuffle();
 
   //No soup for you!
-  strings.clear();
+  listExample.clear();
 
-  //Compare equality using the collections package
-  final isEqual = strings == strings;
+  final setExample = FixedSet<String>({'Example', 'Example2'});
 
-  //Normal hashes are no good for fixed lists. Use a different approach such
-  //as calculating the hash manually.
-  final hashCode = strings.hashCode;
+  //You can't add to a fixed set
+  //ignore: avoid_ignoring_return_values
+  setExample.add('example3');
+
+  final mapExample = FixedMap<String, String>({'Key': 'Value'});
+
+  //You can't put anything in a FixedMap after construction
+  //ignore: avoid_ignoring_return_values
+  mapExample.putIfAbsent('Key 2', () => ' Example 2');
 }
